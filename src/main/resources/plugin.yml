@@ -1,0 +1,38 @@
+name: FFA
+main: org.kitteh.ffa.FreeForAll
+description: ${project.description}
+authors: [OstlerDev,mbaxter]
+url: http://kitteh.org
+version: '${project.version}'
+commands:
+  ffa:
+    usage: /ffa
+    description: Vanish or unvanish
+    permission: vanish.vanish
+    permission-message: You may not vanish.
+permissions:
+  ffa.use:
+    description: Able to join a ffa match
+    default: true
+  ffa.spawn.set:
+    description: Able to set a spawn for ffa
+    default: op
+  ffa.spawn.remove:
+    description: Able to remove ffa spawns
+    default: op
+  ffa.spawn.*:
+    description: All spawn controlling nodes
+    default: op
+    children:
+      ffa.spawn.set: true
+      ffa.spawn.remove: true
+  ffa.reload:
+    description: Able to reload the plugin 
+    default: op
+  ffa.*:
+    description: All permissions
+    default: op
+    children:
+      ffa.use: true
+      ffa.spawn.*: true
+      ffa.reload: true
